@@ -7,7 +7,7 @@ var questionAnswers = document.getElementById("questionAnswers");
 var timeCounter = document.getElementById("timeCounter");
 var score = 0;
 var currentScore = window.localStorage.setItem(score, " ");
-var currentTime = 75;
+var currentTime = 30;
 var currentQuestion = 0;
 
 
@@ -78,7 +78,7 @@ function testCorrectAnswer(){
    console.log("inside test correct answer function");
    currentQuestion++;
    renderQuestion();
-   alert($(item).attr("id"));
+   alert($(Option).attr("id"));
   //  console.log($(this).val());
   //  console.log('${click.value}');
    if(questions[currentQuestion].correct === this.value){
@@ -94,11 +94,24 @@ function testCorrectAnswer(){
   // increment current question here and call render question, also test to see if we are at the end of the array of questions before we render another question. 
 }
 
+function finalScore() {
+ alert("final score " +score);
+ var finalScore = prompt("please enter initals");
+ window.localStorage.setItem(finalScore, " ");
+ highScoreScreen();
+};
+
+function highScoreScreen(){
+  window.location.href = "Highscores.html";
+};
+
 function timerCountDown(){
   setInterval(function(){   
       currentTime--; 
       timeCounter.textContent = currentTime + " seconds";
-      if(currentTime <= 0) {alert("time is out")};
+      if(currentTime <= 0) {
+        finalScore();
+      };
       console.log(timeCounter);
       console.log(currentTime);
   },1000);
