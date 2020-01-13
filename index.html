@@ -15,8 +15,8 @@
 <body>
     <nav class="navbar navbar-dark"  style="background-color: #e3f2fd;">
             <form class="form-inline">
-                <button class="btn btn-outline-primary" type="button">Start Quiz</button>
-                <button class="btn btn-sm btn-outline-secondary" type="button">High Scores</button>
+                <button class="btn btn-outline-primary" type="button" id ="start-Button">Start Quiz</button>
+                <button class="btn btn-sm btn-outline-secondary" type="button" id= "high-Score-Button">High Scores</button>
                 <div class="timeCounter">0 seconds</div>
             </form>
             </nav>
@@ -24,20 +24,26 @@
        <div class = "row">
          <div class = "column-md"></div>
          <div class = "column-lg">
-            <div class="card" style="width: 40rem; background-color: #ffffff; position: relative;">
+            <div class="card" style="width: 40rem; background-color: #ffffff; text-align: center;">
             <div class="card-body">
-                <h2 class="card-title">Card title</h2>
+                <div>
+                <h2 id = "questionTitle" class="card-title">Card title</h2>
                 <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                <div class="btn-group btn-group-toggle" data-toggle="buttons">
-                    <label class="btn btn-secondary active">
-                        <input type="radio" name="options" id="option1" checked> Answer 1 
-                    </label>
+                <!-- <div class="btn-group btn-group-toggle" data-toggle="buttons"> -->
+                    <!-- <label class="btn btn-secondary active"> -->
+                       
+                    <!-- </label>
                     <label class="btn btn-secondary">
                         <input type="radio" name="options" id="option2"> Answer 2
                     </label>
                     <label class="btn btn-secondary">
                         <input type="radio" name="options" id="option3"> Answer 3
-                    </label>
+                    </label> -->
+                    </div>
+                    <div id = "questionAnswers">
+                    <div id="option1"> Answer 1 </div>
+                    <div id="option2"> Answer 2 </div>
+                    <div id="option3"> Answer 3 </div>
                     </div>
                 </div>
              </div>   
