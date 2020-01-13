@@ -17,13 +17,13 @@
             <form class="form-inline">
                 <button class="btn btn-outline-primary" type="button" id ="start-Button">Start Quiz</button>
                 <button class="btn btn-sm btn-outline-secondary" type="button" id= "high-Score-Button">High Scores</button>
-                <div id ="timeCounter">0 seconds</div>
             </form>
+            <div id ="timeCounter">0 seconds</div>
             </nav>
    <div class="container-fluid">
        <div class = "row">
-         <div class = "column-md"></div>
-         <div class = "column-lg">
+         <div class = "col-lg-3"></div>
+         <div class = "col-lg-6">
             <div class="card" style="width: 40rem; background-color: #ffffff; text-align: center;">
             <div class="card-body">
                 <div>
@@ -41,14 +41,17 @@
                     </label> -->
                     </div>
                     <div id = "questionAnswers">
-                    <div id="option1"> Press Start Quiz to begin </div>
+                    <!-- <div id="option1"> Press Start Quiz to begin </div>
                     <div id="option2"> </div>
-                    <div id="option3"> </div>
+                    <div id="option3"> </div> -->
+                    <div id="option1" onclick = "testCorrectAnswer()"> Press Start Quiz to begin </div>
+                    <div id="option2" onclick = "testCorrectAnswer()"> </div>
+                    <div id="option3" onclick = "testCorrectAnswer()"> </div>
                     </div>
                 </div>
              </div>   
         </div>
-    <div class = "column-md"></div>
+    <div class = "col-lg-3"></div>
  </div>
 </div>
         <!-- <div class="jumbotron jumbotron-fluid">

@@ -13,3 +13,14 @@
 #btn-outline {
   color: #487cff;  
 } */
+
+#questionAnswers{
+  background-color:#e3f2fd;
+  /* border: 1em 1em 1em 1em;
+  border-style: solid;
+  border-color: grey; */
+}
+
+.hide {
+  display: none;
+}
