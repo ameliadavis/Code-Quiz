@@ -40,10 +40,10 @@ var questions =[
     correct: "1"
     },
     { 
-    question:"Where should you add the script tag in the HTML Document?",
-    answer1: "1) right below the opening Body tags",
-    answer2: "2) in the head tags",
-    answer3: "3) right above the closing body tags",
+    question:"what is the operator for comparing two conditions?",
+    answer1: "1) =>",
+    answer2: "2) +=",
+    answer3: "3) === ",
     correct: "3"
     },
 ];
