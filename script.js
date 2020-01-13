@@ -4,7 +4,7 @@ var answer1 = document.getElementById("option1");
 var answer2 = document.getElementById("option2");
 var answer3 = document.getElementById("option3");
 var questionAnswers = document.getElementById("questionAnswers");
-var timerCounter = document.getElementById("timeCounter")
+var timeCounter = document.getElementById("timeCounter")
 var score = document.getElementById("");
 var currentTime = 75;
 var currentQuestion = 0;
@@ -63,10 +63,19 @@ function renderQuestion(){
   answer1.textContent = questions[currentQuestion].answer1;
   answer2.textContent = questions[currentQuestion].answer2;
   answer3.textContent = questions[currentQuestion].answer3;
-  $("#option1").on("click", testCorrectAnswer());
-  $("#option2").on("click", testCorrectAnswer());
-  $("#option3").on("click", testCorrectAnswer()); 
- 
+  // $("#option1").on("click", testCorrectAnswer());
+  // $("#option2").on("click", testCorrectAnswer());
+  // $("#option3").on("click", testCorrectAnswer()); 
+
+  $("#option1").on("click", function(){
+    testCorrectAnswer();
+  });
+  $("#option2").on("click", function(){
+    testCorrectAnswer();
+  });
+  $("#option3").on("click", function(){
+    testCorrectAnswer();
+  });
 }
 
 // var lastQuestionIndex = questions.length-1;
@@ -87,11 +96,13 @@ function renderQuestion(){
 
 
 function testCorrectAnswer(){
-  console.log("answer Click worked");
-  console.log(this.value);
-  if(questions[currentQuestion].correct === this.value)//
+   console.log("inside test correct answer function");
+   console.log(this.value)
+   currentQuestion++;
+   renderQuestion();
+   if(questions[currentQuestion].correct === this.value)//
   alert("YAY you got it right!");
-  score++; 
+  score+5; 
   currentQuestion++;
     if(currentQuestion > questions.length) {
       alert(score);
@@ -101,7 +112,7 @@ function testCorrectAnswer(){
   // increment current question here and call render question, also test to see if we are at the end of the array of questions before we render another question. 
 }
 
-// jquery version of event handler
+// Event Handler for start Quiz
 $("#start-Button").on("click", function() {
     console.log("start Button Click");
     renderQuestion();
@@ -110,13 +121,11 @@ $("#start-Button").on("click", function() {
 });
 
 function timerCountDown(){
-        console.log(currentTime + "is left");
-            var timeEl = setInterval(function(){   
-                currentTime--; 
-                $("#timerCounter").innerHTML = timeEl;
-                // if(currentTime <= 0) {clearInterval};
-                console.log(currentTime);
-            },1000);
-          $("#timerCounter").innerHTML = timeEl;
-          console.log(timeEl);   
+  setInterval(function(){   
+      currentTime--; 
+      $("#timeCounter").innerHTML = currentTime;
+      if(currentTime <= 0) {alert("time is out")};
+      console.log(timeCounter);
+      console.log(currentTime);
+  },1000);
 };
