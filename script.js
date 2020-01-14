@@ -6,6 +6,7 @@ var answer3 = document.getElementById("option3");
 var questionAnswers = document.getElementById("questionAnswers");
 var timeCounter = document.getElementById("timeCounter");
 var score = 0;
+var highScores = 0
 var currentScore = window.localStorage.setItem(score, " ");
 var currentTime = 30;
 var currentQuestion = 0;
@@ -18,43 +19,43 @@ var questions =[
     answer1: "1) strings, booleans, special characters ",
     answer2: "2) numbers, booleans, strings ",
     answer3: "3) booleans, numbers, conditions",
-    correct: "2"
+    correct: "option2"
     },  
     { 
     question:"Where should you add the script tag in the HTML Document?",
     answer1: "1) right below the opening Body tags",
     answer2: "2) in the head tags",
     answer3: "3) right above the closing body tags",
-    correct: "3"
+    correct: "option3"
     },
     { 
     question:"What is an annonymous function in javaScript?",
     answer1: "1) a function inside of another function",
     answer2: "2) a function without a name",
     answer3: "3) a method",
-    correct: "2"
+    correct: "option2"
     },
     { 
     question:"What is the correct javaScript syntax for event listeners?",
     answer1: "1) button.addEventListener(click, function());",
     answer2: "2) addEventListener.button(click, function())",
     answer3: "3) click.addEventListener.button (function())",
-    correct: "1"
+    correct: "option1"
     },
     { 
     question:"what is the operator for comparing two conditions?",
     answer1: "1) =>",
     answer2: "2) +=",
     answer3: "3) === ",
-    correct: "3"
+    correct: "option3"
     },
 ];
 
 function renderQuestion(){
-  console.log(questions[0].question);
+  console.log(questions[currentQuestion].question);
   // console.log(runningQuestion);
   console.log(questionDisplay);
-  console.log(questions[0].answer2);
+  console.log(questions[currentQuestion].answer2);
   questionDisplay.textContent = questions[currentQuestion].question;
   answer1.textContent = questions[currentQuestion].answer1;
   answer2.textContent = questions[currentQuestion].answer2;
@@ -64,47 +65,55 @@ function renderQuestion(){
   // $("#option3").on("click", testCorrectAnswer()); 
 
   $("#option1").on("click", function(){
-    testCorrectAnswer();
+    f1();
   });
   $("#option2").on("click", function(){
-    testCorrectAnswer();
+    f1();
   });
   $("#option3").on("click", function(){
-    testCorrectAnswer();
+    f1();
   });
 }
 
-function testCorrectAnswer(){
+function f1(){  
+//  var userAnswer = ($(this).val);
+ var userAnswer = ($("button").value);
+  console.log(userAnswer);
+  // function testCorrectAnswer(){
    console.log("inside test correct answer function");
-   currentQuestion++;
-   renderQuestion();
-   alert($(Option).attr("id"));
-  //  console.log($(this).val());
-  //  console.log('${click.value}');
-   if(questions[currentQuestion].correct === this.value){
+  //  currentQuestion++;
+  //  renderQuestion();
+  //  alert($(Option).attr("id"));
+  // //  console.log($(this).val());
+  // //  console.log('${click.value}');
+  if(currentQuestion > questions.length) {
+    // alert(score);
+    finalScores;
+  }else if(questions[currentQuestion].correct === userAnswer){
     alert("YAY you got it right!");
     score+5; 
     currentQuestion++;
-    if(currentQuestion > questions.length) {
-      alert(score);
+    console.log(currentQuestion);
+    renderQuestion;
     } else {
       alert("whoops wrong answer!");
       currentQuestion++;
+      renderQuestion;
     } console.log(currentScore)};
+  // };
   // increment current question here and call render question, also test to see if we are at the end of the array of questions before we render another question. 
-}
 
 // function quizEnd() {
 //  clearInterval()
 // };
-
+function finalScores(){
 alert("final score " +score);
 var finalScore = prompt("please enter initals");
-
-var highScores = 
+highScores.push(finalScore + score);
+window.localStorage.setItem("highscores", JSON.stringify(highScores));
 JSON.parse(window.localStorage.getItem("highscores")) || [];
-function highScoreScreen(){
-  window.location.href = "Highscores.html";
+// function highScoreScreen(){
+//   window.location.href = "Highscores.html";
 };
 
 // Timer count down function
@@ -114,7 +123,7 @@ function timerCountDown(){
       timeCounter.textContent = currentTime + " seconds";
       if(currentTime <= 0) {
         clearInterval(timeEl);
-        finalScore();
+        finalScores;
       };
       console.log(timeCounter);
       console.log(currentTime);
