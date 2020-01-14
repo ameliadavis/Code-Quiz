@@ -89,27 +89,31 @@ function testCorrectAnswer(){
       alert(score);
     } else {
       alert("whoops wrong answer!");
-      renderQuestion;
+      currentQuestion++;
     } console.log(currentScore)};
   // increment current question here and call render question, also test to see if we are at the end of the array of questions before we render another question. 
 }
 
-function finalScore() {
- alert("final score " +score);
- var finalScore = prompt("please enter initals");
- window.localStorage.setItem(finalScore, " ");
- highScoreScreen();
-};
+// function quizEnd() {
+//  clearInterval()
+// };
 
+alert("final score " +score);
+var finalScore = prompt("please enter initals");
+
+var highScores = 
+JSON.parse(window.localStorage.getItem("highscores")) || [];
 function highScoreScreen(){
   window.location.href = "Highscores.html";
 };
 
+// Timer count down function
 function timerCountDown(){
-  setInterval(function(){   
+  var timeEl = setInterval(function(){   
       currentTime--; 
       timeCounter.textContent = currentTime + " seconds";
       if(currentTime <= 0) {
+        clearInterval(timeEl);
         finalScore();
       };
       console.log(timeCounter);

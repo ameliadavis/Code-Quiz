@@ -28,25 +28,11 @@
             <div class="card-body">
                 <div>
                 <h2 id = "questionTitle" class="card-title">Welcome to my Javascript Quiz!</h2>
-                <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
-                <!-- <div class="btn-group btn-group-toggle" data-toggle="buttons"> -->
-                    <!-- <label class="btn btn-secondary active"> -->
-                       
-                    <!-- </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="options" id="option2"> Answer 2
-                    </label>
-                    <label class="btn btn-secondary">
-                        <input type="radio" name="options" id="option3"> Answer 3
-                    </label> -->
                     </div>
                     <div id = "questionAnswers">
-                    <!-- <div id="option1"> Press Start Quiz to begin </div>
-                    <div id="option2"> </div>
-                    <div id="option3"> </div> -->
-                    <div id="option1" onclick = "testCorrectAnswer()"> Press Start Quiz to begin </div>
-                    <div id="option2" onclick = "testCorrectAnswer()"> </div>
-                    <div id="option3" onclick = "testCorrectAnswer()"> </div>
+                    <div onclick="clicked(this);" id="option1"> Press Start Quiz to begin </div>
+                    <div onclick="clicked(this);" id="option2"> </div>
+                    <div onclick="clicked(this);" id="option3"> </div>
                     </div>
                 </div>
              </div>   
@@ -54,13 +40,6 @@
     <div class = "col-lg-3"></div>
  </div>
 </div>
-        <!-- <div class="jumbotron jumbotron-fluid">
-    <div class="container">
-        <h1 class="display-4">Question</h1>
-        <p class="lead">Answer list</p>
-    </div> -->
-    <!-- </div> -->
-
       </div>    
     <script src="script.js"></script>
 </body>
