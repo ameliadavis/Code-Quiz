@@ -65,21 +65,23 @@ function renderQuestion(){
   // $("#option3").on("click", testCorrectAnswer()); 
 
   $("#option1").on("click", function(){
-    f1();
+    testCorrectAnswer();
   });
   $("#option2").on("click", function(){
-    f1();
+    testCorrectAnswer();
   });
   $("#option3").on("click", function(){
-    f1();
+    testCorrectAnswer();
   });
 }
 
-function f1(){  
-//  var userAnswer = ($(this).val);
- var userAnswer = ($("button").value);
+function f1(objButton){  
+ var userAnswer = alert(objButton.value);
+  console.log(this);
   console.log(userAnswer);
-  // function testCorrectAnswer(){
+}
+
+function testCorrectAnswer(objButton){
    console.log("inside test correct answer function");
   //  currentQuestion++;
   //  renderQuestion();
@@ -89,18 +91,16 @@ function f1(){
   if(currentQuestion > questions.length) {
     // alert(score);
     finalScores;
-  }else if(questions[currentQuestion].correct === userAnswer){
+  }else if(questions[currentQuestion].correct === objButton.value){
     alert("YAY you got it right!");
     score+5; 
     currentQuestion++;
-    console.log(currentQuestion);
     renderQuestion;
     } else {
       alert("whoops wrong answer!");
       currentQuestion++;
-      renderQuestion;
+      renderQuestion
     } console.log(currentScore)};
-  // };
   // increment current question here and call render question, also test to see if we are at the end of the array of questions before we render another question. 
 
 // function quizEnd() {
