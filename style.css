@@ -13,7 +13,9 @@
 #btn-outline {
   color: #487cff;  
 } */
-
+.hide{
+  display:none;
+}
 #questionAnswers{
   background-color:#e3f2fd;
   /* border: 1em 1em 1em 1em;

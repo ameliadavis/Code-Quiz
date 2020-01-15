@@ -13,7 +13,8 @@ var currentTime = 30;
 var currentQuestion = 0;
 var objButton;
 var userAnswer;
-
+var scoreDisplay= document.getElementById("scoreDisplay");
+var instructions= document.getElementById("instructions");
 
 // this is an array where all the questions will be stored
 var questions =[
@@ -55,6 +56,7 @@ var questions =[
 ];
 
 function renderQuestion(){
+  questionAnswers.removeAttribute("class", "hide");
   questionDisplay.textContent = questions[currentQuestion].question;
   answer1.textContent = questions[currentQuestion].answer1;
   answer2.textContent = questions[currentQuestion].answer2;
@@ -104,7 +106,7 @@ function finalScores(){
 alert("final score " + score);
 finalScore = prompt("please enter initals");
 // highScores.push(finalScore + score);
-localStorage.setItem(finalScore, score);
+localStorage.setItem(finalScore, JSON.stringify(score));
 // console.log(finalScore);
 Highscores();
 // window.location.href = "Highscores.html";
@@ -112,11 +114,13 @@ Highscores();
 };
 
 function Highscores(){
-  questionDisplay.textContent = localStorage.getItem(finalScore, score);
-  questionDisplay.textContent = "High scores";
-  answer1.innerHTML=localStorage.getItem(finalScore, score);// dont forget to stringify!
-  answer2.innerHTML = " ";
-  answer3.innerHTML =" ";
+  window.location.href = "Highscores.html";
+  // questionDisplay.textContent = localStorage.getItem(finalScore, score);
+  // questionDisplay.textContent = localStorage.setItem("HighScores", JSON.stringify(score)+finalScore);
+  questionDisplay.textContent = "High Scores";
+  scoreDisplay.innerHTML=JSON.parse(localStorage.getItem(finalScore, score));// dont forget to stringify!
+  // localStorage.setItem('items', JSON.stringify(itemsArray))
+  // const data = JSON.parse(localStorage.getItem('items'))
  
 }
 
@@ -139,4 +143,12 @@ $("#start-Button").on("click", function() {
   console.log("start Button Click");
   renderQuestion();
   timerCountDown();
+  instructions.setAttribute("class","hide");
 });
+
+$("#high-Score-Button").on("click", function() {
+  console.log("grabbing highscore");
+  Highscores();  
+});
+
+instructions.removeAttribute("class","hide");
