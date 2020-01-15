@@ -10,6 +10,8 @@ var highScores = 0
 var currentScore = window.localStorage.setItem(score, " ");
 var currentTime = 30;
 var currentQuestion = 0;
+var objButton;
+var userAnswer;
 
 
 // this is an array where all the questions will be stored
@@ -52,10 +54,10 @@ var questions =[
 ];
 
 function renderQuestion(){
-  console.log(questions[currentQuestion].question);
+  // console.log(questions[currentQuestion].question);
   // console.log(runningQuestion);
-  console.log(questionDisplay);
-  console.log(questions[currentQuestion].answer2);
+  // console.log(questionDisplay);
+  // console.log(questions[currentQuestion].answer2);
   questionDisplay.textContent = questions[currentQuestion].question;
   answer1.textContent = questions[currentQuestion].answer1;
   answer2.textContent = questions[currentQuestion].answer2;
@@ -76,31 +78,37 @@ function renderQuestion(){
 }
 
 function f1(objButton){  
- var userAnswer = alert(objButton.value);
-  console.log(this);
-  console.log(userAnswer);
+objButton = objButton;
+ userAnswer = objButton.value;
+//  alert(objButton.value);
+//   console.log("this",this);
+  // console.log("user answer", userAnswer);
+  testCorrectAnswer;
 }
 
-function testCorrectAnswer(objButton){
+function testCorrectAnswer(){
    console.log("inside test correct answer function");
   //  currentQuestion++;
   //  renderQuestion();
   //  alert($(Option).attr("id"));
   // //  console.log($(this).val());
   // //  console.log('${click.value}');
-  if(currentQuestion > questions.length) {
+  if(currentQuestion >= questions.length){
     // alert(score);
-    finalScores;
-  }else if(questions[currentQuestion].correct === objButton.value){
+    console.log("completed question array");
+    finalScores();
+  } else if(questions[currentQuestion].correct === userAnswer){
+    console.log("inside Else if correct", userAnswer);
     alert("YAY you got it right!");
     score+5; 
     currentQuestion++;
-    renderQuestion;
+    renderQuestion();
     } else {
       alert("whoops wrong answer!");
       currentQuestion++;
-      renderQuestion
-    } console.log(currentScore)};
+      renderQuestion();
+    } 
+  };
   // increment current question here and call render question, also test to see if we are at the end of the array of questions before we render another question. 
 
 // function quizEnd() {
