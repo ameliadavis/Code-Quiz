@@ -7,6 +7,7 @@ var questionAnswers = document.getElementById("questionAnswers");
 var timeCounter = document.getElementById("timeCounter");
 var score = 0;
 var highScores = 0
+var finalScore;
 var currentScore = window.localStorage.setItem(score, " ");
 var currentTime = 30;
 var currentQuestion = 0;
@@ -54,17 +55,10 @@ var questions =[
 ];
 
 function renderQuestion(){
-  // console.log(questions[currentQuestion].question);
-  // console.log(runningQuestion);
-  // console.log(questionDisplay);
-  // console.log(questions[currentQuestion].answer2);
   questionDisplay.textContent = questions[currentQuestion].question;
   answer1.textContent = questions[currentQuestion].answer1;
   answer2.textContent = questions[currentQuestion].answer2;
   answer3.textContent = questions[currentQuestion].answer3;
-  // $("#option1").on("click", testCorrectAnswer());
-  // $("#option2").on("click", testCorrectAnswer());
-  // $("#option3").on("click", testCorrectAnswer()); 
 
   $("#option1").on("click", function(){
     testCorrectAnswer();
@@ -88,41 +82,43 @@ objButton = objButton;
 
 function testCorrectAnswer(){
    console.log("inside test correct answer function");
-  //  currentQuestion++;
-  //  renderQuestion();
-  //  alert($(Option).attr("id"));
-  // //  console.log($(this).val());
-  // //  console.log('${click.value}');
   if(currentQuestion >= questions.length){
-    // alert(score);
     console.log("completed question array");
     finalScores();
-  } else if(questions[currentQuestion].correct === userAnswer){
-    console.log("inside Else if correct", userAnswer);
-    alert("YAY you got it right!");
-    score+5; 
+    return;
+  }if(questions[currentQuestion].correct === userAnswer){
+    // alert("YAY you got it right!");
+    score++; 
+    score++;
     currentQuestion++;
     renderQuestion();
-    } else {
-      alert("whoops wrong answer!");
+    return;
+  } else {
+      // alert("whoops wrong answer!");
       currentQuestion++;
       renderQuestion();
     } 
   };
-  // increment current question here and call render question, also test to see if we are at the end of the array of questions before we render another question. 
 
-// function quizEnd() {
-//  clearInterval()
-// };
 function finalScores(){
-alert("final score " +score);
-var finalScore = prompt("please enter initals");
-highScores.push(finalScore + score);
-window.localStorage.setItem("highscores", JSON.stringify(highScores));
-JSON.parse(window.localStorage.getItem("highscores")) || [];
-// function highScoreScreen(){
-//   window.location.href = "Highscores.html";
+alert("final score " + score);
+finalScore = prompt("please enter initals");
+// highScores.push(finalScore + score);
+localStorage.setItem(finalScore, score);
+// console.log(finalScore);
+Highscores();
+// window.location.href = "Highscores.html";
+// return;
 };
+
+function Highscores(){
+  questionDisplay.textContent = localStorage.getItem(finalScore, score);
+  questionDisplay.textContent = "High scores";
+  answer1.innerHTML=localStorage.getItem(finalScore, score);// dont forget to stringify!
+  answer2.innerHTML = " ";
+  answer3.innerHTML =" ";
+ 
+}
 
 // Timer count down function
 function timerCountDown(){
@@ -133,15 +129,14 @@ function timerCountDown(){
         clearInterval(timeEl);
         finalScores;
       };
-      console.log(timeCounter);
-      console.log(currentTime);
+      // console.log(timeCounter);
+      // console.log(currentTime);
   },1000);
 };
 
-// Event Handler for start Quiz
+// Event Handler for start Quiz also triggers the timer
 $("#start-Button").on("click", function() {
   console.log("start Button Click");
   renderQuestion();
-  // runningQuestion();
   timerCountDown();
 });
