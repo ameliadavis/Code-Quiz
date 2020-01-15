@@ -1,5 +1,6 @@
 console.log("in java file");
 var questionDisplay = document.getElementById("questionTitle");
+var questionDisplay2 = document.getElementById("questionTitle2");
 var answer1 = document.getElementById("option1");
 var answer2 = document.getElementById("option2");
 var answer3 = document.getElementById("option3");
@@ -107,21 +108,28 @@ alert("final score " + score);
 finalScore = prompt("please enter initals");
 // highScores.push(finalScore + score);
 localStorage.setItem(finalScore, JSON.stringify(score));
-// console.log(finalScore);
+console.log(finalScore);
 Highscores();
 // window.location.href = "Highscores.html";
 // return;
 };
 
 function Highscores(){
-  window.location.href = "Highscores.html";
+  // window.location.href = "Highscores.html"; 
+  
+    console.log(questionDisplay2);
+    questionDisplay2 = document.getElementById("questionTitle2");
+    questionDisplay2.textContent = "High Scores";
+    scoreDisplay.innerHTML=JSON.parse(localStorage.getItem(finalScore, score));// dont forget to stringify!
+    // var scores = localStorage.getItem(score);
+    var scores = window.localStorage.getItem(score);
+    console.log("stored ", scores);
+  
   // questionDisplay.textContent = localStorage.getItem(finalScore, score);
   // questionDisplay.textContent = localStorage.setItem("HighScores", JSON.stringify(score)+finalScore);
-  questionDisplay.textContent = "High Scores";
-  scoreDisplay.innerHTML=JSON.parse(localStorage.getItem(finalScore, score));// dont forget to stringify!
+  
   // localStorage.setItem('items', JSON.stringify(itemsArray))
   // const data = JSON.parse(localStorage.getItem('items'))
- 
 }
 
 // Timer count down function
@@ -148,7 +156,16 @@ $("#start-Button").on("click", function() {
 
 $("#high-Score-Button").on("click", function() {
   console.log("grabbing highscore");
-  Highscores();  
-});
+  console.log("win" ,window.location.href);
+  window.location.href = "Highscores.html"; 
+  // Highscores();
 
-instructions.removeAttribute("class","hide");
+});
+if(window.location.href === "file:///Users/adavis853/www/Code-Quiz/index.html"){
+  instructions.removeAttribute("class","hide");
+}
+if(window.location.href === "file:///Users/adavis853/www/Code-Quiz/Highscores.html"){
+  $(document).ready(function(){
+    Highscores();
+  })
+}
